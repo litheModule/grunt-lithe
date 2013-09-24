@@ -1,0 +1,43 @@
+{
+  "name": "grunt-lithe",
+  "description": "the lithe modules build tool for grunt",
+  "version": "0.1.0",
+  "homepage": "https://github.com/xiaojue/grunt-lithe",
+  "author": {
+    "name": "xiaojue",
+    "email": "designsor@gmail.com",
+    "url": "http://www.tuer.me/profile/designsor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xiaojue/grunt-lithe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xiaojue/grunt-lithe/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/xiaojue/grunt-lithe/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
