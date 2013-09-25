@@ -35,7 +35,8 @@ module.exports = function(grunt) {
             basepath:'test/'
         },
         files: {
-          'test/tmp/': 'test/conf/'
+          'test/tmp/': 'test/conf/',
+          'test/tmp/temp-app.js': 'test/conf/'
         }
       }
     },
