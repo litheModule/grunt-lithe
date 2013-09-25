@@ -8,43 +8,80 @@
 
 'use strict';
 
+var lithe = require('lithe');
+var tool = lithe.tool;
+var litheOptions = tool.options;
+var Path = require('path');
+var rootpath = process.cwd();
+
+function isJs(path) {
+	return Path.extname(path) === '.js';
+}
+
+function isDirPath(path){
+   return path.lastIndexOf('/') === path.length - 1; 
+}
+
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+	grunt.registerMultiTask('lithe', 'lithe for grunt plugin', function() {
 
-  grunt.registerMultiTask('lithe', 'lithe for grunt plugin', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+		var options = this.options({
+			//alias: {}
+			//basepath:''
+		});
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+		if (options.basepath) {
+			litheOptions.basepath = Path.resolve(rootpath, options.basepath);
+		}
+		if (options.alias) {
+			litheOptions.alias = options.alias;
+		}
 
-      // Handle options.
-      src += options.punctuation;
+		this.files.forEach(function(f) {
+			var src = [];
+			f.src.filter(function(path) {
+				if (grunt.file.exists(path)) {
+					return true;
+				} else {
+					return false;
+				}
+			}).forEach(function(path) {
+				if (grunt.file.isFile(path) && isJs(path)) {
+					src.push({
+						path: path,
+						name: Path.filename(path)
+					});
+				} else if (grunt.file.isDir(path)) {
+					grunt.file.recurse(path, function(abspath, rootdir, subdir, filename) {
+						if (isJs) {
+							src.push({
+								path: abspath,
+								name: filename
+							});
+						}
+					});
+				}
+			});
+			src.forEach(function(file) {
+				var conf = Path.resolve(rootpath, file.path);
+				var requires = tool.findJsAllrequires(conf);
+				requires.push(conf);
+				var str = requires.map(function(file) {
+					return grunt.file.read(file);
+				}).join('');
 
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
+				if (isDirPath(f.dest)) {
+					grunt.file.write(f.dest + file.name, str);
+					grunt.log.writeln('File "' + f.dest + file.name + '" created.');
+				} else {
+					grunt.file.write(f.dest, str);
+					grunt.log.writeln('File "' + f.dest + '" created.');
+				}
+			});
+		});
 
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
-  });
+	});
 
 };
+
