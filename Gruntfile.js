@@ -32,7 +32,10 @@ module.exports = function(grunt) {
     lithe: {
       app: {
         options: {
-            basepath:'test/'
+            basepath:'test/',
+            filter:function(filepath){
+                return true;
+            }
         },
         files: {
           'test/tmp/': 'test/conf/',

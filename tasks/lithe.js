@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 				var conf = Path.resolve(rootpath, file.path);
 				var requires = tool.findJsAllrequires(conf);
 				requires.push(conf);
-				if (options.filter && typeof filter == 'function') requires = requires.filter(filter);
+				if (options.filter && typeof options.filter == 'function') requires = requires.filter(options.filter);
 				var str = requires.map(function(file) {
 					return grunt.file.read(file);
 				}).join('');
