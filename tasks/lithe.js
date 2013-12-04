@@ -18,8 +18,8 @@ function isJs(path) {
 	return Path.extname(path) === '.js';
 }
 
-function isDirPath(path){
-   return path.lastIndexOf('/') === path.length - 1; 
+function isDirPath(path) {
+	return path.lastIndexOf('/') === path.length - 1;
 }
 
 module.exports = function(grunt) {
@@ -29,6 +29,7 @@ module.exports = function(grunt) {
 		var options = this.options({
 			//alias: {}
 			//basepath:''
+			//filter:function(){}
 		});
 
 		if (options.basepath) {
@@ -67,6 +68,7 @@ module.exports = function(grunt) {
 				var conf = Path.resolve(rootpath, file.path);
 				var requires = tool.findJsAllrequires(conf);
 				requires.push(conf);
+				if (options.filter && typeof filter == 'function') requires = requires.filter(filter);
 				var str = requires.map(function(file) {
 					return grunt.file.read(file);
 				}).join('');
