@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         },
         files: {
           'test/tmp/': 'test/conf/',
-          'test/tmp/temp-app.js': 'test/conf/'
+          'test/tmp/temp-app.js': 'test/conf/app.js'
         }
       }
     },

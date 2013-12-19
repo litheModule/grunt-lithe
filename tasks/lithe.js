@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 				if (grunt.file.isFile(path) && isJs(path)) {
 					src.push({
 						path: path,
-						name: Path.filename(path)
+						name: Path.basename(path)
 					});
 				} else if (grunt.file.isDir(path)) {
 					grunt.file.recurse(path, function(abspath, rootdir, subdir, filename) {
