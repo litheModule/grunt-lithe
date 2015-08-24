@@ -6,8 +6,6 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
-
 var lithe = require('lithe');
 var tool = lithe.tool;
 var litheOptions = tool.options;

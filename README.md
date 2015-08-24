@@ -73,4 +73,11 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-0.1.0
+
+* 2015-08-25 v0.2.0 Add litheCompress task, add litheConcat task, add litheGetAllRequiredFiles task.
+* 2014-03-26 v0.1.7 Fix filter bug .
+* 2013-12-19 v0.1.6 Fix the compress file bug. Improve docs.
+* 2013-12-10 v0.1.5 Fix module git uri.
+* 2013-12-04 v0.1.4 The lithe task add filter option, add unit tests.
+* 2013-09-26 v0.1.1 Fix the bug that 'isJs' should be used as a function.
+* 2013-09-25 v0.1.0 The first official release.
