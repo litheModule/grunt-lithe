@@ -265,6 +265,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+
 * 2015-08-25 v0.2.0 Add litheCompress task, add litheConcat task, add litheGetAllRequiredFiles task.
 * 2014-03-26 v0.1.7 Fix filter bug .
 * 2013-12-19 v0.1.6 Fix the compress file bug. Improve docs.
