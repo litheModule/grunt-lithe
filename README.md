@@ -18,9 +18,8 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-lithe');
 ```
 
-## The "lithe" task
+## lithe multitask
 
-### Overview
 In your project's Gruntfile, add a section named `lithe` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -53,7 +52,7 @@ your lithe config alias object
 
 ### Usage Examples
 
-#### Options
+__Options__
 
 ```js
 grunt.initConfig({
@@ -68,6 +67,47 @@ grunt.initConfig({
   }
 })
 ```
+
+## litheCompress multitask
+Compress js files. The method "require" will not be compressed.
+
+#### options.cwd
+Type: `String`
+Your lithe project local basepath.
+
+#### src
+Type: `String`
+The relative path of original files .
+
+#### dest
+Type: `String`
+The relative path of compressed files.
+
+### Usage Examples
+__Options__
+
+```js
+var path = require('path');
+
+grunt.initConfig({
+  litheCompress : {
+    options : {
+      cwd: path.resolve(__dirname,'../')
+    },
+    publish : {
+      src : 'tools/temp/trunk/js/',
+      dest : 'tools/temp/compressed/js/'
+    }
+  }
+})
+```
+
+## litheConcat multitask
+
+
+## litheGetAllRequiredFiles multitask
+
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
