@@ -1,7 +1,7 @@
 # grunt-lithe
 [![Build Status](https://travis-ci.org/litheModule/grunt-lithe.png?branch=master)](https://travis-ci.org/litheModule/grunt-lithe) [![依赖模块状态](https://david-dm.org/litheModule/grunt-lithe.png)](http://david-dm.org/litheModule/grunt-lithe)
 
-[中文](https://github.com/litheModule/grunt-lithe/docs/README_zh-cn.md)
+[中文](https://github.com/litheModule/grunt-lithe/blob/master/docs/README_zh-cn.md)
 
 > lithe for grunt plugin
 
