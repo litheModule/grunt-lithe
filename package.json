@@ -40,6 +40,12 @@
   "peerDependencies": {
     "grunt": "~0.4.1"
   },
+  "files": [
+    "tasks",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "gruntplugin"
   ]

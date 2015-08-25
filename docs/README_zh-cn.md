@@ -1,8 +1,6 @@
 # grunt-lithe
 [![Build Status](https://travis-ci.org/litheModule/grunt-lithe.png?branch=master)](https://travis-ci.org/litheModule/grunt-lithe) [![依赖模块状态](https://david-dm.org/litheModule/grunt-lithe.png)](http://david-dm.org/litheModule/grunt-lithe)
 
-[中文]()
-
 > lithe for grunt plugin
 
 ## Getting Started
@@ -46,7 +44,7 @@ Type: `String`
 
 Default value: `undefined`
 
-(required) your lithe project basepath
+(required) lithe 项目的线上根路径
 
 #### options.alias
 
@@ -54,7 +52,7 @@ Type: `Object`
 
 Default value: `undefined`
 
-your lithe config alias object
+lithe 的配置文件中的 alias 选项。
 
 #### Usage Examples
 
@@ -76,25 +74,25 @@ grunt.initConfig({
 
 ## litheCompress multitask
 
-Compress js files. The method "require" will not be compressed.
+用于压缩JS文件，"require"方法名称不会在压缩中替换为其他字符
 
 #### options.cwd
 
 Type: `String`
 
-Your lithe project local basepath.
+lithe 项目的本地根路径
 
 #### src
 
 Type: `String`
 
-The relative path of original files .
+原始文件的相对路径（相对于根路径）
 
 #### dest
 
 Type: `String`
 
-The relative path of compressed files.
+输出的压缩文件的相对路径
 
 #### Usage Examples
 __Options__
@@ -117,59 +115,61 @@ grunt.initConfig({
 
 ## litheConcat multitask
 
+对基于 lithe 的项目文件进行打包合并
+
 ### options.cwd
 
 Type: `String`
 
-Your lithe project local basepath.
+lithe 项目的本地根路径
 
 #### src
 
 Type: `String`
 
-The relative path of original files .
+原始文件的相对路径
 
 #### dest
 
 Type: `String`
 
-The relative path of concated files.
+合并后文件的输出路径
 
 #### target
 
 Type: `String`
 
-The relative path. Get startup files.
+页面入口文件的存放位置，相对路径
 
 #### walk
 
 Type: `Boolean`
 
-Whether traverse the target directory.
+是否深度遍历目标目录
 
 #### alias
 
 Type: `String`
 
-The relative file path. Get the alias config from the file.
+填写配置文件的相对路径，用于自动获取 alias 选项
 
 #### global
 
 Type: `String`
 
-The relative file path of global module.
+公共文件的相对路径
 
-The output files will not merge dependent files that were defined in global file.
+打包输出的文件，不会合并公共文件中已定义的文件
 
 ### withoutGlobal
 
 Type: `Array`
 
-It is a string array.
+是一个字符串数组
 
-Each string is a relative path.
+每个字符串是一个相对路径
 
-List of files in the directory will merge all dependent files.
+列举目录下的文件，合并时会合并所有依赖到的文件，不管其是否在公共文件中列出
 
 #### Usage Examples
 __Options__
@@ -201,35 +201,37 @@ grunt.initConfig({
 
 ## litheGetAllRequiredFiles multitask
 
+获取所有打包依赖的文件
+
 #### options.cwd
 
 Type: `String`
 
-Your lithe project local basepath.
+lithe 项目的本地根路径
 
 #### src
 
 Type: `String`
 
-The relative path of original files .
+原始文件的相对路径
 
 #### dest
 
 Type: `String`
 
-The relative path of selected files.
+选中文件的输出路径
 
 #### alias
 
 Type: `String`
 
-The relative file path. Get the alias config from the file.
+填写配置文件的相对路径，用于自动获取 alias 选项
 
 #### target
 
 Type: `String`
 
-The relative path. Get startup files.
+项目入口文件的相对路径
 
 #### Usage Examples
 
@@ -254,16 +256,4 @@ grunt.initConfig({
 });
 ```
 
-## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-
-* 2015-08-25 v0.2.0 Add litheCompress task, add litheConcat task, add litheGetAllRequiredFiles task.
-* 2014-03-26 v0.1.7 Fix filter bug .
-* 2013-12-19 v0.1.6 Fix the compress file bug. Improve docs.
-* 2013-12-10 v0.1.5 Fix module git uri.
-* 2013-12-04 v0.1.4 The lithe task add filter option, add unit tests.
-* 2013-09-26 v0.1.1 Fix the bug that 'isJs' should be used as a function.
-* 2013-09-25 v0.1.0 The first official release.
