@@ -172,7 +172,7 @@ It is a string array.
 
 Each string is a relative path.
 
-List of files in the directory will merge all dependent files.
+Files not in the list directories will merge all dependent files.
 
 #### Usage Examples
 
