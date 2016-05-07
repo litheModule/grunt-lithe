@@ -35,7 +35,10 @@ module.exports = function(grunt) {
             basepath:'test/',
             filter:function(filepath){
                 return true;
-            }
+            },
+            publicdeps:[
+                "vendors/zepto.js"
+            ]
         },
         files: {
           'test/tmp/': 'test/conf/',
@@ -64,6 +67,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'lithe', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['test']);
 
 };
