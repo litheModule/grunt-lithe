@@ -36,8 +36,8 @@ module.exports = function(grunt) {
             filter:function(filepath){
                 return true;
             },
-            publicdeps:[
-                "vendors/zepto.js"
+            publicdeps:[ // 例如:"vendors/zepto.js"
+              "vendors/zepto.js"
             ]
         },
         files: {
@@ -67,6 +67,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'lithe', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('default', ['jshint', 'test']);
 
 };
