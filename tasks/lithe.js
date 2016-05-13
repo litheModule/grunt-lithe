@@ -39,8 +39,15 @@ module.exports = function(grunt) {
 
 		// 改动,判断是否配置publicdeps
 
-		if (options.publicdeps && options.publicdeps.length > 0) {
-			litheOptions.publicdeps = options.publicdeps;
+		if (options.publicdeps) {
+			var deps = Object.keys(options.publicdeps);
+			litheOptions.publicdeps = tool.uniq(deps.map(function(current){
+				if (current.lastIndexOf(".js") < 0) {
+					return current + ".js";
+				}else {
+					return current;
+				}
+			}));
 		}
 
 		this.files.forEach(function(f) {
@@ -74,6 +81,7 @@ module.exports = function(grunt) {
 				requires.push(conf);
 
 				// 改动,剔除公共依赖
+
 				if (litheOptions.publicdeps) {
 					litheOptions.publicdeps.forEach(function(pd) {
 						requires.forEach(function(rd) {
@@ -84,9 +92,9 @@ module.exports = function(grunt) {
 					});
 				}
 
-				requires.forEach(function(current) {
+				/*requires.forEach(function(current) {
 					console.log("after...",current);
-				});
+				});*/
 
 				var str = requires.map(function(file) {
 					return grunt.file.read(file);
