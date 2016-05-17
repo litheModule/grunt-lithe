@@ -35,7 +35,10 @@ module.exports = function(grunt) {
             basepath:'test/',
             filter:function(filepath){
                 return true;
-            }
+            },
+            publicdeps:[ // 例如:"vendors/zepto.js"
+              "vendors/zepto.js"
+            ]
         },
         files: {
           'test/tmp/': 'test/conf/',
