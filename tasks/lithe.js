@@ -80,6 +80,9 @@ module.exports = function(grunt) {
 				var requires = tool.findJsAllrequires(conf,[],options.filter);
 				requires.push(conf);
 
+				requires = requires.map(function(c) {
+					return c.split(Path.sep).join('/');
+				});
 				// 改动,剔除公共依赖
 
 				if (litheOptions.publicdeps) {
